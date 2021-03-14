@@ -1,0 +1,13 @@
+﻿@model IEnumerable<SimpleToDoApp.Models.Todo>
+@{
+    ViewData["Title"] = "Все заметки";
+}
+<a asp-action="Create">Добавить событие</a>
+<table class="table">
+    <tr><td>Текст</td><td>Дата</td></tr>
+    @foreach (var item in Model)
+    {
+        <tr><td>@item.Text</td><td>@item.DataCreation.ToString()</td></tr>
+    }
+</table>
+
