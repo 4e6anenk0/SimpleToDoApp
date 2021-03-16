@@ -1,0 +1,29 @@
+﻿.todos {
+    margin: 0 auto;
+}
+
+.card {
+    width: 16rem;
+}
+
+.card-footer {
+    height: 55px;
+}
+
+.card-footer label {
+   
+}
+
+.card-footer button {
+    display: none;
+}
+
+.card-footer:focus button, .card-footer:hover button {
+    display: block;
+   
+}
+
+.card-footer:focus label, .card-footer:hover label {
+    display: none;
+}
+

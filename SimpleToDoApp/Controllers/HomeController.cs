@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SimpleToDoApp.Data;
 using SimpleToDoApp.Models;
+using SimpleToDoApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,17 +15,24 @@ namespace SimpleToDoApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private TodoDbContext db;
+        TodoRepository db;
 
         public HomeController(ILogger<HomeController> logger, TodoDbContext context)
         {
             _logger = logger;
-            db = context;
+            db = new TodoRepository(context);
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await db.Todos.ToListAsync());
+            return View(db.GetAllTodos());
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            db.Delete(id);
+            return RedirectToAction("Index");
         }
 
         public IActionResult Create()
@@ -33,10 +41,10 @@ namespace SimpleToDoApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Todo todo)
+        public IActionResult Create(Todo todo)
         {
-            db.Todos.Add(todo);
-            await db.SaveChangesAsync();
+            db.Create(todo);
+            db.Save();
             return RedirectToAction("Index");
         }
 

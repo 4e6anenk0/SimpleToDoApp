@@ -2,12 +2,29 @@
 @{
     ViewData["Title"] = "Все заметки";
 }
-<a asp-action="Create">Добавить событие</a>
-<table class="table">
-    <tr><td>Текст</td><td>Дата</td></tr>
+<h1>Сегодня</h1>
+
+<div class="todos">
     @foreach (var item in Model)
     {
-        <tr><td>@item.Text</td><td>@item.DataCreation.ToString()</td></tr>
+
+    <div class="card bg-light mb-3" >
+        <div class="card-body">
+            <p class="card-text">@item.Text</p>
+        </div>
+        <div class="card-footer">
+            <label>@item.DataCreation.ToString()</label>
+            <form method="post" asp-action="Delete" asp-route-id="@item.ID">
+                <button type="submit" 
+                        class="btn btn-danger btn-sm"
+                        onclick="return confirm('Вы действительно хотите удалить заметку?')">
+                    Удалить
+                </button>
+            </form>
+        </div>
+        
+    </div>
+
     }
-</table>
+</div>
 
