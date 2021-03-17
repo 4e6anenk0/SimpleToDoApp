@@ -4,10 +4,12 @@
     ViewBag.Title = "Добавление заметки";
 }
 
-<form asp-action="create" asp-controller="home">
+<form method="post" asp-action="Create" asp-controller="Home">
     <div class="form-group">
         <label asp-for="Text" class="control-label">Текст</label>
         <input type="text" asp-for="Text" class="form-control" />
+        <label asp-for="EndData" class="control-label">Дата</label>
+        <input type="datetime-local" asp-for="EndData" class="form-control" />
     </div>
     
     <div class="form-group">

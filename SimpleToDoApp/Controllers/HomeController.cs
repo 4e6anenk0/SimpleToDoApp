@@ -1,14 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SimpleToDoApp.Data;
 using SimpleToDoApp.Models;
 using SimpleToDoApp.Services;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SimpleToDoApp.Controllers
 {
@@ -43,10 +38,22 @@ namespace SimpleToDoApp.Controllers
         [HttpPost]
         public IActionResult Create(Todo todo)
         {
-            db.Create(todo);
-            db.Save();
+            db.Create(todo);           
             return RedirectToAction("Index");
         }
+
+        //[HttpGet]
+        //public IActionResult Edit(int id)
+        //{
+        //    return View(db.GetTodo(id));
+        //}
+
+        //[HttpPost]
+        //public IActionResult Edit(Todo todo)
+        //{
+        //    db.Update(todo);
+        //    return RedirectToAction("Index");
+        //}
 
         public IActionResult Privacy()
         {

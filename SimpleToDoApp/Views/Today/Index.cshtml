@@ -1,16 +1,16 @@
 ﻿@model IEnumerable<SimpleToDoApp.Models.Todo>
 @{
-    ViewData["Title"] = "Все заметки";
+    ViewData["Title"] = "Заметки на сегодня";
 }
 <div style="display: flex; align-items: center">
-    <h1 style="margin-right: 40px; margin-bottom: 20px">Все заметки</h1>  
-    <a class="btn-link" style="color: #418f0d" asp-controller="Home" asp-action="Create">Создать</a>  
+    <h1 style="margin-right: 40px; margin-bottom: 20px">Сегодня</h1>
+    <a class="btn-link" style="color: #418f0d" asp-controller="Home" asp-action="Create">Создать</a>
 </div>
 
 <div class="todos">
     @foreach (var item in Model)
     {
-    <div class="card bg-light mb-3" >
+    <div class="card border-danger mb-3" >
         <div class="card-body">
             <p class="card-text">@item.Text</p>
         </div>

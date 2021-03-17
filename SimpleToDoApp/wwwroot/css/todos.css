@@ -7,11 +7,7 @@
 }
 
 .card-footer {
-    height: 55px;
-}
-
-.card-footer label {
-   
+    height: 55px;  
 }
 
 .card-footer button {
@@ -20,10 +16,11 @@
 
 .card-footer:focus button, .card-footer:hover button {
     display: block;
-   
 }
 
 .card-footer:focus label, .card-footer:hover label {
     display: none;
 }
+
+
 
