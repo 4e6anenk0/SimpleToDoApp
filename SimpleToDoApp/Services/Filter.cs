@@ -52,7 +52,5 @@ namespace SimpleToDoApp.Services
                                           select t;
             return queryable;
         }
-
-
     }
 }
